@@ -26,7 +26,7 @@ function App() {
   return (
     <>
       <Header />
-      <div className="flex flex-col min-h-screen justify-center items-center px-20">
+      <div className="flex flex-col min-h-screen justify-center items-center bg-gradient-to-r from-teal-200 to-lime-200">
         {att.map((item, index) => {
           return (
             <div
@@ -36,16 +36,16 @@ function App() {
               <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 {item.Course || <Skeleton animation="wave" />}
               </h5>
-              <p className="font-normal text-gray-700 dark:text-gray-400">
+              <p className="font-normal text-yellow-700 dark:text-yellow-400">
                 Conducted: {item.Conducted}
               </p>
-              <p className="font-normal text-gray-700 dark:text-gray-400">
+              <p className="font-normal text-green-700 dark:text-green-400">
                 Attended: {item.Attended}
               </p>
-              <p className="font-normal text-gray-700 dark:text-gray-400">
+              <p className="font-normal text-blue-700 dark:text-blue-400">
                 Attendance: {item.Attendance}%
               </p>
-              <p className="font-normal text-gray-700 dark:text-gray-400">
+              <p className="font-normal text-red-700 dark:text-red-400">
                 Required: {(0.75 * item.Conducted - item.Attended) / 0.25}
               </p>
             </div>
