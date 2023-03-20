@@ -1,11 +1,11 @@
 import "./App.css";
-import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
 import { useState, useEffect } from "react";
 import { Skeleton } from "@mui/material";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 function App() {
   const [data, setData] = useState([]);
-  const [att,Setatt] = useState([]);
+  const [att, setAtt] = useState([]);
 
   useEffect(() => {
     const fetchdata = async () => {
@@ -16,26 +16,44 @@ function App() {
       if (response.ok) {
         setData(json);
         const dataArray = Object.values(json[0].att[0]);
-        Setatt(dataArray);
+        dataArray.pop();
+        setAtt(dataArray);
       }
     };
     fetchdata();
   }, []);
   console.log(data);
   return (
-    <div className="flex flex-row min-h-screen justify-center items-center">
-      {att.map((item, index) => {
-        return (
-          <div key={index}>
-            <h2>{item.Course}</h2>
-            <p>Conducted {item.Conducted}</p>
-            <p>Attended {item.Attended}</p>
-            <p>Attendance {item.Attendance}</p>
-          </div>
-        )
-      })}
-    </div>
+    <>
+      <Header />
+      <div className="flex flex-col min-h-screen justify-center items-center px-20">
+        {att.map((item, index) => {
+          return (
+            <div
+              key={index}
+              className="block max-w-7xl p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 my-4"
+            >
+              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                {item.Course || <Skeleton animation="wave" />}
+              </h5>
+              <p className="font-normal text-gray-700 dark:text-gray-400">
+                Conducted: {item.Conducted}
+              </p>
+              <p className="font-normal text-gray-700 dark:text-gray-400">
+                Attended: {item.Attended}
+              </p>
+              <p className="font-normal text-gray-700 dark:text-gray-400">
+                Attendance: {item.Attendance}%
+              </p>
+              <p className="font-normal text-gray-700 dark:text-gray-400">
+                Required: {(0.75 * item.Conducted - item.Attended) / 0.25}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+      <Footer />
+    </>
   );
 }
-
 export default App;
