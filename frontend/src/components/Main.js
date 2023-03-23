@@ -22,7 +22,7 @@ export default function Main(props) {
                   <div className="p-3 sm:p-9 text-base">
                     <div
                       className="text-3xl pb-2 font-semibold"
-                      style={{ fontFamily: "Roboto Mono" }}
+                      style={{ fontFamily: "Source Sans Pro" }}
                     >
                       {item.Course || <Skeleton animation="wave" />}
                     </div>
