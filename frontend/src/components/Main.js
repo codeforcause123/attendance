@@ -20,18 +20,30 @@ export default function Main(props) {
                   data-aos-anchor-placement="top-bottom"
                 >
                   <div className="p-3 sm:p-9 text-base">
-                    <div className="text-3xl pb-2 font-semibold">
+                    <div
+                      className="text-3xl pb-2 font-semibold"
+                      style={{ fontFamily: "Roboto Mono" }}
+                    >
                       {item.Course || <Skeleton animation="wave" />}
                     </div>
                     <div className="pl-2">
-                      <p className="text-orange-600 text-xl">
+                      <p
+                        className="text-orange-600 text-xl"
+                        style={{ fontFamily: "JetBrains Mono" }}
+                      >
                         Conducted: {item.Conducted}
                       </p>
-                      <p className="text-green-600 text-xl">
+                      <p
+                        className="text-green-600 text-xl"
+                        style={{ fontFamily: "JetBrains Mono" }}
+                      >
                         Attended: {item.Attended}
                       </p>
-                      <p className="text-blue-600 text-xl">
-                        Attendance: {item.Attendance}%
+                      <p
+                        className="text-blue-600 text-xl"
+                        style={{ fontFamily: "JetBrains Mono" }}
+                      >
+                        Attendance: {item.Attendance} %
                       </p>
                     </div>
                   </div>
